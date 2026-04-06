@@ -1,0 +1,12 @@
+{
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "id": "nix-develop",
+      "title": "Nix Develop",
+      "extensionIdentifier": "",
+      "command": "bash",
+      "args": ["-c", "nix develop"]
+    }
+  }
+}

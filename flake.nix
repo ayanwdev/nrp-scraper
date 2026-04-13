@@ -24,23 +24,34 @@
         testwatcher = pkgs.writeShellScriptBin "testwatcher" ''
           nodemon --watch . --ext py --exec "clear && ${bin}/pytest"
         '';
+        buildInputs = [
+          watcher
+          testwatcher
+          pkgs.fish
+          pkgs.python314
+          pkgs.poetry
+          pkgs.nodemon
+        ];
       in
       {
-        devShells.default =
-          with pkgs;
-          mkShell {
-            buildInputs = [
-              watcher
-              testwatcher
-              pkgs.fish
-              pkgs.python314
-              pkgs.poetry
-              pkgs.nodemon
-            ];
-            shellHook = ''
-              fish -C "source ./.venv/bin/activate.fish"
-            '';
-          };
+        devShells = {
+          default =
+            with pkgs;
+            mkShell {
+              buildInputs = buildInputs;
+              shellHook = ''
+                fish -C "source ./.venv/bin/activate.fish"
+              '';
+            };
+          ci =
+            with pkgs;
+            mkShell {
+              buildInputs = buildInputs;
+              shellHook = ''
+                source ./.venv/bin/activate
+              '';
+            };
+        };
       }
     );
 }

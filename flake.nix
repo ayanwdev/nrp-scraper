@@ -31,6 +31,7 @@
           pkgs.python314
           pkgs.poetry
           pkgs.nodemon
+          pkgs.rclone
         ];
       in
       {

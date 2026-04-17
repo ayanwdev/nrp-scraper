@@ -2,7 +2,6 @@ import pytest
 from os import path
 from util.read_rss import read_rss
 
-
 FIXTURE_PATH = path.join(path.dirname(__file__), "fixtures/prothom_alo.xml")
 
 @pytest.fixture
@@ -12,7 +11,7 @@ def parsed():
 
 @pytest.fixture
 def item(parsed):
-    return parsed[0]
+  return parsed[0]
 
 def test_parsed_is_list(parsed):
   assert isinstance(parsed, list)

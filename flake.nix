@@ -19,10 +19,10 @@
         bin = "./.venv/bin";
         pkgs = import nixpkgs { inherit system; };
         watcher = pkgs.writeShellScriptBin "watcher" ''
-          nodemon --watch . --ext py --exec "clear && ${bin}/python3.14 main.py"
+          nodemon --watch . --ext py --exec "clear && poetry run main"
         '';
         testwatcher = pkgs.writeShellScriptBin "testwatcher" ''
-          nodemon --watch . --ext py --exec "clear && ${bin}/pytest"
+          nodemon --watch . --ext py --exec "clear && poetry run pytest"
         '';
         buildInputs = [
           watcher

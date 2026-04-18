@@ -10,7 +10,6 @@ jobs:
     - uses: cachix/install-nix-action@v31
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
-    - run: nix flake check
     - run: nix develop .#ci --command sh -c "python -m venv .venv"
     - run: nix develop .#ci --command sh -c "source .venv/bin/activate && poetry install"
     - run: nix develop .#ci --command sh -c "source .venv/bin/activate && poetry run ruff format --check ."

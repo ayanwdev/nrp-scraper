@@ -8,10 +8,12 @@ from util.read_rss import read_rss
 
 FIXTURE_PATH = path.join(path.dirname(__file__), "fixtures/prothom_alo.xml")
 
+
 @pytest.fixture
 def parsed():
   xml = open(FIXTURE_PATH).read()
   return read_rss(xml)
+
 
 def test_create_json_file(parsed):
   create_json_file(
@@ -20,6 +22,7 @@ def test_create_json_file(parsed):
   )
   files = list((Path(config.JSON_OUTPUT_DIR)).glob("test_*.json"))
   assert len(files) > 0
+
 
 def test_is_valid_json():
   files = list((Path(config.JSON_OUTPUT_DIR)).glob("test_*.json"))

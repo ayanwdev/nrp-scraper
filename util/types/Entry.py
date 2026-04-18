@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class Entry:
   id: str
@@ -9,6 +10,7 @@ class Entry:
   updated_at: str
   authors: list[str]
   tags: list[str]
+
 
 def parse_entry(entry) -> Entry:
   return Entry(

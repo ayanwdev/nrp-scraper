@@ -4,20 +4,25 @@ from util.read_rss import read_rss
 
 FIXTURE_PATH = path.join(path.dirname(__file__), "fixtures/prothom_alo.xml")
 
+
 @pytest.fixture
 def parsed():
   xml = open(FIXTURE_PATH).read()
   return read_rss(xml)
 
+
 @pytest.fixture
 def item(parsed):
   return parsed[0]
 
+
 def test_parsed_is_list(parsed):
   assert isinstance(parsed, list)
 
+
 def test_parsed_is_not_empty(parsed):
   assert len(parsed) > 0
+
 
 def test_item_fields(item):
   assert item.id == "urn:uuid:512fa75d-95d3-40d7-9738-273f6e83628a"

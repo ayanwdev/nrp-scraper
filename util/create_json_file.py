@@ -5,11 +5,12 @@ import os
 import config
 from util.types.Entry import Entry
 
+
 def create_json_file(
-    data: list[Entry],
-    outdir_name: str = config.JSON_OUTPUT_DIR,
-    filename_fmt: str = config.JSON_FILENAME_FMT,
-  ):
+  data: list[Entry],
+  outdir_name: str = config.JSON_OUTPUT_DIR,
+  filename_fmt: str = config.JSON_FILENAME_FMT,
+):
 
   if not data:
     print("empty data, skipping write.")
@@ -34,6 +35,6 @@ def create_json_file(
 
   try:
     with open(filepath, mode="w") as f:
-      json.dump(json_data, f, separators=(',', ':'))
+      json.dump(json_data, f, separators=(",", ":"))
   except OSError as e:
     raise OSError(f"failed to write file '{filepath}': {e}") from e

@@ -1,4 +1,4 @@
-name: "Test"
+name: "Format"
 on:
   pull_request:
   push:
@@ -13,4 +13,4 @@ jobs:
     - run: nix flake check
     - run: nix develop .#ci --command sh -c "python -m venv .venv"
     - run: nix develop .#ci --command sh -c "source .venv/bin/activate && poetry install"
-    - run: nix develop .#ci --command sh -c "source .venv/bin/activate && poetry run pytest"
+    - run: nix develop .#ci --command sh -c "source .venv/bin/activate && poetry run ruff format --check ."

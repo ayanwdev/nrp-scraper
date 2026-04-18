@@ -2,6 +2,7 @@ from urllib import request
 from util.read_rss import read_rss
 from constants.sources import sources_en
 
+
 def fetch_rss():
   extracted_rss = []
   for source in sources_en.get("prothom_alo", []):

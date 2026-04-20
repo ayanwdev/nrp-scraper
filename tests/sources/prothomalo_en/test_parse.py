@@ -1,14 +1,15 @@
 import pytest
 from os import path
-from util.read_rss import read_rss
 
-FIXTURE_PATH = path.join(path.dirname(__file__), "fixtures/prothom_alo.xml")
+from util.sources.prothomalo_en.parse import parse_rss
+
+FIXTURE_PATH = path.join(path.dirname(__file__), "fixtures/prothomalo_en.xml")
 
 
 @pytest.fixture
 def parsed():
   xml = open(FIXTURE_PATH).read()
-  return read_rss(xml)
+  return parse_rss(xml)
 
 
 @pytest.fixture

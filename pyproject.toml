@@ -3,18 +3,22 @@ name = "nrp-scraper"
 dynamic = ["version"]
 requires-python = ">=3.14"
 
-[tool.poetry]
-version = "1.0.0"
-packages = [{ include = "main.py" }]
-
-[tool.poetry.scripts]
+[project.scripts]
 main = "main:main"
 
-[tool.poetry.dependencies]
+[tool.poetry]
+version = "1.0.0-dev"
+packages = [{ include = "main.py" }]
+
+[tool.dependencies]
 feedparser = "^6.0.12"
+beautifulsoup4 = "^4.14.3"
 
 [dependency-groups]
-dev = ["pytest (>=9.0.2,<10.0.0)", "ruff (>=0.15.11,<0.16.0)"]
+dev = [
+  "pytest (>=9.0.2,<10.0.0)",
+  "ruff (>=0.15.11,<0.16.0)",
+]
 
 [tool.ruff]
 line-length = 88
